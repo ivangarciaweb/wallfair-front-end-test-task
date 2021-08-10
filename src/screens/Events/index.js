@@ -1,6 +1,8 @@
 import _ from "lodash";
 import BaseContainerWithNavbar from "../../components/BaseContainerWithNavbar";
+import Container from "components/Container";
 import NewEventCard from "../../components/NewEventCard";
+import BetCard from "../../components/BetCard";
 import CarouselContainer from "../../components/CarouselContainer";
 import FixedEventCreationIconButton from "../../components/FixedEventCreationIconButton";
 import Header from "../../components/Header/index";
@@ -34,22 +36,12 @@ const Events = () => {
                 <NewEventCard
                     key={eventIndex}
                     image={event.src}
-                    userId={event.text}
+                    title={event.title}
                     hot={event.hot}
-                    eventEnd={event.eventEnd}
-                    // onClick={onEventClick(event._id, bet._id)}
+                    tags={event.tags}
+                    eventStart={event.eventStart}
                 />
             );
-
-            // return _.map(bets, (bet, betIndex) => {
-            //     const key = eventIndex + "." + betIndex;
-            //     const eventEnd = new Date(_.get(bet, "endDate"));
-            //     const tradeState = _.get(bet, "status");
-
-            //     if (tradeState === BetState.active) {
-
-            //     }
-            // });
         });
     };
 
@@ -57,12 +49,11 @@ const Events = () => {
         return <FixedEventCreationIconButton />;
     };
 
-    console.log("events test", events);
-
     return (
-        <BaseContainerWithNavbar>
+        <BaseContainerWithNavbar withPaddingTop={true} contentPadding={true}>
+            <Container>{renderEventsList()}</Container>
             {/* <Header events={events} /> */}
-            {/* <LiveEventCarouselContainer /> */}
+
             {/* <CarouselContainer title={"Events"}>
                 {renderMostPopularBets()}
             </CarouselContainer> */}

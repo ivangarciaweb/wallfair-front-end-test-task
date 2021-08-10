@@ -1,0 +1,10 @@
+@import "../../styles/all";
+
+.container {
+    width: 100%;
+    min-height: 100%;
+    color: $colorWhite;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    @extend %displayFlexRowCenter;
+}
