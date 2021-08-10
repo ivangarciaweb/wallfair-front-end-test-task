@@ -1,0 +1,111 @@
+@import '../../styles/all';
+
+.inputBoxContainer
+{
+    display:        flex;
+    flex-direction: column;
+    width:          100%;
+
+    > *:not(:last-child)
+    {
+        margin-bottom: 11px;
+    }
+
+    .inputBox
+    {
+        width:         100%;
+        height:        60px;
+        position:      relative;
+        display:       flex;
+        align-items:   center;
+        padding:       15px 20px;
+        border-radius: 8px;
+        border:        3px solid transparent;
+
+        &.defaultInputBox
+        {
+            background-color: $colorGrayLight;
+        }
+
+        &.copyToClipboardInputBox
+        {
+            background-color: $colorGrayLight;
+
+            .input
+            {
+                caret-color: transparent;
+            }
+        }
+
+        &.coloredBorderMint
+        {
+            border-color: $colorMint;
+        }
+
+        &.coloredBorderLightPurple
+        {
+            border-color: $colorLightPurple;
+        }
+
+        .inputDeleteIconContainer
+        {
+            cursor:   pointer;
+            position: absolute;
+            width:    25px;
+            height:   25px;
+            right:    17px;
+        }
+    }
+}
+
+:global
+{
+    .MuiPopover-root,
+    .MuiDialog-root
+    {
+        z-index: $zIndexMuiRoot !important;
+    }
+
+    .MuiTextField-root
+    {
+        width: 100%;
+    }
+
+    .MuiInput-underline
+    {
+        &:after,
+        &:before
+        {
+            display: none !important;
+        }
+    }
+
+    .MuiInputBase-input
+    {
+        font-family: $fontRegular !important;
+    }
+
+    .MuiPickersToolbar-toolbar,
+    .MuiPickersClockPointer-pointer,
+    .MuiPickersClockPointer-noPoint,
+    .MuiPickersDay-daySelected,
+    .MuiPickersClock-pin
+    {
+        background-color: $colorPrimary !important;
+
+        &.MuiPickersClockPointer-noPoint,
+        {
+            border-color: $colorPrimary !important;
+        }
+    }
+
+    .MuiPickersClockPointer-thumb
+    {
+        border-color: $colorPrimary !important;
+    }
+
+    .MuiButton-textPrimary
+    {
+        color: $colorPrimary !important;
+    }
+}
