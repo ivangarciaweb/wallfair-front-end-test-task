@@ -1,0 +1,5 @@
+@import "../../styles/all";
+
+.events_filters {
+    @extend %displayRowFlexStart;
+}

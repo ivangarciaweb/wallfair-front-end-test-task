@@ -1,37 +1,22 @@
-import _ from "lodash";
-import BaseContainerWithNavbar from "../../components/BaseContainerWithNavbar";
+import { useState } from "react";
+import BaseContainerWithNavbar from "components/BaseContainerWithNavbar";
 import Container from "components/Container";
-import NewEventCard from "../../components/NewEventCard";
-import BetCard from "../../components/BetCard";
-import CarouselContainer from "../../components/CarouselContainer";
-import FixedEventCreationIconButton from "../../components/FixedEventCreationIconButton";
-import Header from "../../components/Header/index";
-import LiveEventCarouselContainer from "../../components/LiveEventCarouselContainer";
-import Routes from "../../constants/Routes";
-import styles from "./styles.module.scss";
+import NewEventCard from "components/NewEventCard";
+import PageTitle from "components/PageTitle";
+import EventsFilters from "components/EventsFilters";
+import { eventsList } from "../../helper/TestExampleData";
+import _ from "lodash";
 import { connect } from "react-redux";
-import { useHistory } from "react-router";
-import BetState from "../../components/BetView/BetState";
-import { events } from "../../helper/TestExampleData";
+
+import styles from "./styles.module.scss";
 
 const Events = () => {
-    const history = useHistory();
-
-    const onEventClick = (eventId, betId = "") => {
-        return () => {
-            history.push(
-                Routes.getRouteWithParameters(Routes.bet, {
-                    eventId,
-                    betId,
-                })
-            );
-        };
+    const [currentFilter, setCurrentFilter] = useState("all");
+    const updateCurrentFilter = (filter) => {
+        setCurrentFilter(filter);
     };
-
     const renderEventsList = () => {
-        return _.map(events, (event, eventIndex) => {
-            console.log("event", event);
-
+        return _.map(eventsList, (event, eventIndex) => {
             return (
                 <NewEventCard
                     key={eventIndex}
@@ -39,25 +24,24 @@ const Events = () => {
                     title={event.title}
                     hot={event.hot}
                     tags={event.tags}
-                    eventStart={event.eventStart}
+                    eventEnd={event.eventEnd}
                 />
             );
         });
     };
 
-    const renderEventCreationButton = () => {
-        return <FixedEventCreationIconButton />;
-    };
+    console.log("currentFilter", currentFilter);
 
     return (
         <BaseContainerWithNavbar withPaddingTop={true} contentPadding={true}>
+            <PageTitle title="Events" />
+            <div className={styles.events___filters}>
+                <EventsFilters
+                    active={currentFilter}
+                    onClick={updateCurrentFilter}
+                />
+            </div>
             <Container>{renderEventsList()}</Container>
-            {/* <Header events={events} /> */}
-
-            {/* <CarouselContainer title={"Events"}>
-                {renderMostPopularBets()}
-            </CarouselContainer> */}
-            {/* {renderEventCreationButton()} */}
         </BaseContainerWithNavbar>
     );
 };

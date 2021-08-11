@@ -1,142 +1,122 @@
 @import "../../styles/all";
 
-.navbar
-{
-    position:        absolute;
-    top:             0;
-    left:            0;
-    width:           100%;
-    height:          60px;
-    display:         flex;
-    flex-direction:  row;
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items:     center;
-    padding:         3rem 30px;
-    z-index:         $zIndexNavbar;
+    align-items: center;
+    padding: 3rem 30px;
+    z-index: $zIndexNavbar;
 
-    @media (min-width: $screen-sm)
-    {
+    @media (min-width: $screen-sm) {
         padding: 3rem;
     }
 
-    img
-    {
+    img {
         margin-right: 2rem;
     }
 
-    .navbarItems
-    {
-        display:     flex;
+    .navbarItems {
+        display: flex;
         align-items: center;
 
-        &.hideOnMobile
-        {
-            @media (max-width: $screen-xs-max)
-            {
+        &.hideOnMobile {
+            @media (max-width: $screen-xs-max) {
                 display: none;
             }
         }
 
-        &:not(.hideOnMobile)
-        {
-            @media (max-width: $screen-xs-max)
-            {
-                width:           100%;
+        &:not(.hideOnMobile) {
+            @media (max-width: $screen-xs-max) {
+                width: 100%;
                 justify-content: space-between;
-                flex-direction:  row-reverse;
+                flex-direction: row-reverse;
             }
         }
 
-        a
-        {
-            color:           $colorWhite;
-            opacity:         0.5;
+        a {
+            color: $colorWhite;
+            opacity: 0.5;
             text-decoration: none;
-            padding:         0 0.5rem;
-            font-family:     $fontLight;
+            padding: 0 0.5rem;
+            font-family: $fontLight;
         }
 
-        .ranking
-        {
-            width:           121px;
-            height:          36px;
-            display:         flex;
+        .ranking {
+            width: 121px;
+            height: 36px;
+            display: flex;
             justify-content: center;
-            align-items:     center;
-            margin-right:    16px;
-            background:      #3c4d77;
-            border-radius:   18px;
-            cursor:          pointer;
-            z-index:         5;
+            align-items: center;
+            margin-right: 16px;
+            background: #3c4d77;
+            border-radius: 18px;
+            cursor: pointer;
+            z-index: 5;
 
-            @media (max-width: $screen-xs)
-            {
+            @media (max-width: $screen-xs) {
                 margin: 0;
             }
 
-            .medal
-            {
-                width:        15px;
-                height:       20px;
+            .medal {
+                width: 15px;
+                height: 20px;
                 margin-right: 8px;
             }
 
-            .rankingText
-            {
-                font-size:   12px;
+            .rankingText {
+                font-size: 12px;
                 line-height: 12px;
-                color:       #ffffff;
+                color: #ffffff;
             }
         }
 
-        .balanceOverview
-        {
-            display:          none;
-            color:            $colorWhite;
-            border:           none;
+        .balanceOverview {
+            display: none;
+            color: $colorWhite;
+            border: none;
             background-color: transparent;
-            padding:          0 1rem 0 0.5rem;
-            font-family:      $fontBold;
-            text-align:       right;
-            opacity:          1;
-            font-size:        16px;
-            z-index:          5;
+            padding: 0 1rem 0 0.5rem;
+            font-family: $fontBold;
+            text-align: right;
+            opacity: 1;
+            font-size: 16px;
+            z-index: 5;
 
-            .actualBalanceText
-            {
-                display:     block;
+            .actualBalanceText {
+                display: block;
                 font-family: $fontLight;
-                color:       $colorGrayLight2 !important;
+                color: $colorGrayLight2 !important;
 
-                @media (min-width: $screen-sm)
-                {
+                @media (min-width: $screen-sm) {
                     display: none;
                 }
             }
 
-            @media (min-width: $screen-sm)
-            {
+            @media (min-width: $screen-sm) {
                 display: block;
             }
         }
 
-        .notificationOverview
-        {
+        .notificationOverview {
             position: relative;
             color: white;
             z-index: 5;
             padding: 0 1rem;
-            cursor:  pointer;
+            cursor: pointer;
 
-            .notificationIcon
-            {
+            .notificationIcon {
                 position: absolute;
                 top: -10px;
                 left: 0;
             }
 
-            .notificationNew
-            {
+            .notificationNew {
                 position: absolute;
                 top: -12px;
                 right: -5px;
@@ -147,161 +127,156 @@
                 align-items: center;
                 background: $colorRedLight;
                 border-radius: 8.4px;
-                
-                .notificationNewText
-                {
+
+                .notificationNewText {
                     font-size: 10px;
                     line-height: 13px;
-                    color: #FFFFFF;
+                    color: #ffffff;
                 }
             }
         }
 
-        .mainMenu
-        {
+        .mainMenu {
             width: auto;
 
-            @media (min-width: $screen-sm)
-            {
+            @media (min-width: $screen-sm) {
                 display: none;
             }
         }
 
-        .profile
-        {
-            height:              50px;
-            width:               50px;
-            border-radius:       50%;
-            background-color:    $colorGrayLight;
-            margin:              0 0.5rem 0 1.5rem;
-            background-size:     cover;
+        .profile {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $colorGrayLight;
+            margin: 0 0.5rem 0 1.5rem;
+            background-size: cover;
             background-position: center center;
-            border:              2px solid $colorWhite;
-            cursor:              pointer;
-            z-index:             5;
+            border: 2px solid $colorWhite;
+            cursor: pointer;
+            z-index: 5;
 
-            @media (max-width: $screen-sm)
-            {
+            @media (max-width: $screen-sm) {
                 display: none;
             }
         }
 
-        .profileMobile
-        {
-            height:              50px;
-            width:               50px;
-            border-radius:       50%;
-            background-color:    $colorGrayLight;
-            margin:              0 0.5rem 0 1rem;
-            background-size:     cover;
+        .profileMobile {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $colorGrayLight;
+            margin: 0 0.5rem 0 1rem;
+            background-size: cover;
             background-position: center center;
-            border:              2px solid $colorWhite;
+            border: 2px solid $colorWhite;
 
-            @media (min-width: $screen-sm)
-            {
+            @media (min-width: $screen-sm) {
                 display: none;
             }
         }
 
-        .active
-        {
-            opacity:     1;
+        .active {
+            opacity: 1;
             font-family: $fontBold;
+            position: relative;
+            &:before {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 60%;
+                border-radius: 3px;
+                background: $colorYellowActive;
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                bottom: -10px;
+            }
         }
     }
 
-    .leaderboard
-    {
-        position:   fixed;
-        top:        0;
-        right:      0;
-        width:      40%;
-        height:     100vh;
+    .leaderboard {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100vh;
         background: rgba(14, 9, 39, 0.86);
         overflow-y: scroll;
 
-        @media (max-width: $screen-md)
-        {
+        @media (max-width: $screen-md) {
             width: 100vw;
         }
 
-        .closeLeaderboard
-        {
+        .closeLeaderboard {
             position: absolute;
-            top:      90px;
-            right:    30px;
-            width:    20px;
-            height:   20px;
-            cursor:   pointer;
+            top: 90px;
+            right: 30px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
-        .leaderboardHeading
-        {
-            margin:         80px 0 90px 50px;
-            font-size:      30px;
-            line-height:    39px;
+        .leaderboardHeading {
+            margin: 80px 0 90px 50px;
+            font-size: 30px;
+            line-height: 39px;
             letter-spacing: 0.75px;
-            color:          #ffffff;
+            color: #ffffff;
         }
 
-        .leaderboardTable
-        {
-            display:        flex;
+        .leaderboardTable {
+            display: flex;
             flex-direction: column;
-            width:          100%;
+            width: 100%;
 
-            .tableHeadings
-            {
-                display:       flex;
-                width:         100%;
-                padding:       0 50px 0 50px;
+            .tableHeadings {
+                display: flex;
+                width: 100%;
+                padding: 0 50px 0 50px;
                 margin-bottom: 16px;
 
-                @media (max-width: $screen-md)
-                {
+                @media (max-width: $screen-md) {
                     padding: 0 20px 0 20px;
                 }
 
-                .rankingHeading
-                {
-                    width:          60px;
-                    margin-right:   52px;
-                    font-weight:    normal;
-                    font-size:      11px;
-                    line-height:    14px;
+                .rankingHeading {
+                    width: 60px;
+                    margin-right: 52px;
+                    font-weight: normal;
+                    font-size: 11px;
+                    line-height: 14px;
                     letter-spacing: 1.64375px;
-                    color:          #ffffff;
+                    color: #ffffff;
                     mix-blend-mode: normal;
-                    opacity:        0.45;
+                    opacity: 0.45;
 
-                    @media (max-width: $screen-md)
-                    {
+                    @media (max-width: $screen-md) {
                         margin-right: 30px;
                     }
                 }
 
-                .userHeading
-                {
-                    font-weight:    normal;
-                    font-size:      11px;
-                    line-height:    14px;
+                .userHeading {
+                    font-weight: normal;
+                    font-size: 11px;
+                    line-height: 14px;
                     letter-spacing: 1.64375px;
-                    color:          #ffffff;
+                    color: #ffffff;
                     mix-blend-mode: normal;
-                    opacity:        0.45;
+                    opacity: 0.45;
                 }
 
-                .tokenHeading
-                {
-                    width:          100%;
-                    text-align:     end;
-                    font-weight:    normal;
-                    font-size:      11px;
-                    line-height:    14px;
+                .tokenHeading {
+                    width: 100%;
+                    text-align: end;
+                    font-weight: normal;
+                    font-size: 11px;
+                    line-height: 14px;
                     letter-spacing: 1.64375px;
-                    color:          #ffffff;
+                    color: #ffffff;
                     mix-blend-mode: normal;
-                    opacity:        0.45;
+                    opacity: 0.45;
                 }
             }
         }
