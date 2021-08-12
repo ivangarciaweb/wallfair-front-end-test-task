@@ -1,17 +1,72 @@
 @import "../../styles/all";
-.select {
+.sort_select {
     position: relative;
-    display: block;
     background: rgba($color: $colorPurpleLight, $alpha: 0.15);
-    padding: 10px 30px 10px 15px;
-    padding: 10px 30px 10px 15px;
+
     color: $colorWhite;
     border-radius: 4px;
-    &___current_option {
+    margin-left: 10px;
+    z-index: 5;
+    @extend %displayRowFlexEnd;
+    &___content {
+        cursor: pointer;
+        padding: 10px 10px 10px 15px;
+        @extend %displayRowFlexEnd;
+        &___label {
+            font-size: 12px;
+            opacity: 0.5;
+        }
+        &___current_option {
+            width: 100px;
+            padding: 0 15px;
+            font-size: 12px;
+            text-align: right;
+        }
+        &___icon {
+            transition: $defaultTransition;
+        }
+        &___active {
+            transform: rotate(180deg);
+        }
     }
     &___list {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 35px;
+        height: auto;
+        background: rgba($color: $colorPurpleLight, $alpha: 0.25);
+        border-radius: 4px;
+        opacity: 0;
+        transition: $defaultTransition;
         &___option {
             color: $colorWhite;
+            padding: 5px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: right;
+            &:hover {
+                background: rgba($color: $colorPurpleLight, $alpha: 0.25);
+            }
         }
+        &___active {
+            background: rgba($color: $colorPurpleLight, $alpha: 0.25);
+        }
+    }
+    &___show {
+        opacity: 1;
+    }
+    &___overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 4;
+    }
+    &___no_show {
+        pointer-events: none;
     }
 }

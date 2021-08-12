@@ -4,5 +4,8 @@
     &___filters {
         @extend %displayRowSpaceBetween;
         margin-right: 10px;
+        &___search_sort {
+            @extend %displayRowSpaceBetween;
+        }
     }
 }

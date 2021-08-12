@@ -1,51 +1,48 @@
-@import '../../styles/all';
+@import "../../styles/all";
 
-.icon
-{
+.icon {
     background-size: contain;
-    width:           100%;
-    height:          auto;
-    display:         flex;
+    width: 100%;
+    height: auto;
+    display: flex;
     justify-content: center;
-    align-items:     center;
-    position:        relative;
-
-    &.iconCircled
-    {
-        border:        solid 1.2px $colorPrimary;
+    align-items: center;
+    position: relative;
+    svg {
+        width: 100%;
+    }
+    &.iconCircled {
+        border: solid 1.2px $colorPrimary;
         border-radius: 100%;
-        padding:       5px;
+        padding: 5px;
     }
 
-    &.iconBlack
-    {
-        > svg
-        {
-            @include svgColorStroke($colorBlack)
+    &.iconBlack {
+        > svg {
+            @include svgColorStroke($colorBlack);
         }
     }
 
-    &.iconPrimary
-    {
-        > svg
-        {
-            @include svgColorStroke($colorPrimary)
+    &.iconPrimary {
+        > svg {
+            @include svgColorStroke($colorPrimary);
         }
     }
 
-    &.iconPrimaryLightTransparent
-    {
-        > svg
-        {
-            @include svgColorStroke($colorPrimaryLight20)
+    &.iconPrimaryLightTransparent {
+        > svg {
+            @include svgColorStroke($colorPrimaryLight20);
         }
     }
 
-    &.iconWhite
-    {
-        > svg
-        {
-            @include svgColorStroke($colorWhite)
+    &.iconWhite {
+        > svg {
+            @include svgColorStroke($colorWhite);
+        }
+    }
+    &.iconWhiteFill {
+        > svg {
+            @include svgColorFill($colorWhite);
         }
     }
 }

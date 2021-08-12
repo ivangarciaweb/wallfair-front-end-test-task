@@ -1,6 +1,7 @@
 export default {
-    black:                   'black',
-    primary:                 'primary',
-    primaryLightTransparent: 'primaryLightTransparent',
-    white:                   'white',
+    black: "black",
+    primary: "primary",
+    primaryLightTransparent: "primaryLightTransparent",
+    white: "white",
+    whiteFill: "whiteFill",
 };

@@ -15,9 +15,46 @@ import styles from "./styles.module.scss";
 const Events = () => {
     const [currentFilter, setCurrentFilter] = useState("all");
     const [newEventList, setNewEventList] = useState(eventsList);
-    const [filteredEvents, setFilteredEvents] = useState([]);
+    const [filteredEvents, setFilteredEvents] = useState(eventsList);
+    const [currentSortOption, setCurrenSortOption] = useState({
+        label: "Time to end",
+        value: "timeToEnd",
+    });
 
-    const sortingEvents = () => {};
+    const sortingEvents = (option) => {
+        setCurrenSortOption(option);
+        const arrayOfEvents =
+            currentFilter === "all" ? eventsList : filteredEvents;
+        switch (option.value) {
+            case "sort":
+                const sortedEvents = arrayOfEvents.sort((a, b) => {
+                    return a.title.localeCompare(b.title);
+                });
+                setNewEventList(sortedEvents);
+                break;
+            case "reverse":
+                const sortedEventsReverse = arrayOfEvents.sort((a, b) => {
+                    return b.title.localeCompare(a.title);
+                });
+                setNewEventList(sortedEventsReverse);
+                break;
+            case "hot":
+                const rebuiltHotArray = [
+                    ...filteredEvents.filter((event) => !!event.hot),
+                    ...filteredEvents.filter((event) => !event.hot),
+                ];
+                setNewEventList(rebuiltHotArray);
+                break;
+            case "timeToEnd":
+            default:
+                setNewEventList(
+                    filteredEvents.sort(function (a, b) {
+                        return a.eventEnd - b.eventEnd;
+                    })
+                );
+                break;
+        }
+    };
 
     const searchingEvents = (searchString) => {
         let searchLower = null;
@@ -85,7 +122,8 @@ const Events = () => {
 
     useEffect(() => {
         filteringEvents(currentFilter);
-    }, []);
+        sortingEvents(currentSortOption);
+    }, [currentFilter, currentSortOption]);
 
     return (
         <BaseContainerWithNavbar withPaddingTop={true} contentPadding={true}>
@@ -102,7 +140,10 @@ const Events = () => {
                             searchingEvents(e.target.value);
                         }}
                     />
-                    <SortSelect />
+                    <SortSelect
+                        currentOption={currentSortOption}
+                        onSelect={sortingEvents}
+                    />
                 </div>
             </div>
             <Container>{renderEventsList()}</Container>
