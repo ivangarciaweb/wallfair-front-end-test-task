@@ -2,5 +2,7 @@
 
 .events {
     &___filters {
+        @extend %displayRowSpaceBetween;
+        margin-right: 10px;
     }
 }

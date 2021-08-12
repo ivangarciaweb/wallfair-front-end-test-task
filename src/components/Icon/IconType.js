@@ -37,6 +37,7 @@ export default {
     phoneNumber: "phoneNumbers",
     refresh: "refresh",
     search: "search",
+    searchSmall: "searchSmall",
     settings: "settings",
     success: "success",
     support: "support",

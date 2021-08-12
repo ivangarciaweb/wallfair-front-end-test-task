@@ -4,6 +4,7 @@ import Container from "components/Container";
 import NewEventCard from "components/NewEventCard";
 import PageTitle from "components/PageTitle";
 import EventsFilters from "components/EventsFilters";
+import SearchInput from "components/SearchInput";
 import { eventsList, eventsFilters } from "../../helper/TestExampleData";
 import _ from "lodash";
 import { connect } from "react-redux";
@@ -69,6 +70,12 @@ const Events = () => {
                     active={currentFilter}
                     onClick={filteringEvents}
                 />
+                <div className={styles.events___filters___search_sort}>
+                    <SearchInput
+                        placeholder="Search..."
+                        onChange={(e) => console.log("value", e.target.value)}
+                    />
+                </div>
             </div>
             <Container>{renderEventsList()}</Container>
         </BaseContainerWithNavbar>

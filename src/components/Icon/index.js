@@ -40,6 +40,7 @@ import { ReactComponent as IconNotification } from "../../data/icons/notificatio
 import { ReactComponent as IconPhoneNumber } from "../../data/icons/phone-number.svg";
 import { ReactComponent as IconRefresh } from "../../data/icons/refresh.svg";
 import { ReactComponent as IconSearch } from "../../data/icons/search.svg";
+import { ReactComponent as IconSearchSmall } from "../../data/icons/search-small.svg";
 import { ReactComponent as IconSettings } from "../../data/icons/settings.svg";
 import { ReactComponent as IconSuccess } from "../../data/icons/success.svg";
 import { ReactComponent as IconSupport } from "../../data/icons/support.svg";
@@ -102,6 +103,7 @@ const Icon = ({
             [IconType.phoneNumber]: <IconPhoneNumber />,
             [IconType.refresh]: <IconRefresh />,
             [IconType.search]: <IconSearch />,
+            [IconType.searchSmall]: <IconSearchSmall />,
             [IconType.settings]: <IconSettings />,
             [IconType.support]: <IconSupport />,
             [IconType.switcher]: <IconSwitcher />,
