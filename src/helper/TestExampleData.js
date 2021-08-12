@@ -144,3 +144,22 @@ export const eventsFilters = [
         value: "other",
     },
 ];
+
+export const sortOptions = [
+    {
+        label: "Default",
+        value: "default",
+    },
+    {
+        label: "Time to end",
+        value: "timeToEnd",
+    },
+    {
+        label: "A-Z",
+        value: "sort",
+    },
+    {
+        label: "Z-A",
+        value: "reverse",
+    },
+];

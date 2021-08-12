@@ -1,0 +1,17 @@
+@import "../../styles/all";
+.select {
+    position: relative;
+    display: block;
+    background: rgba($color: $colorPurpleLight, $alpha: 0.15);
+    padding: 10px 30px 10px 15px;
+    padding: 10px 30px 10px 15px;
+    color: $colorWhite;
+    border-radius: 4px;
+    &___current_option {
+    }
+    &___list {
+        &___option {
+            color: $colorWhite;
+        }
+    }
+}

@@ -5,6 +5,7 @@ import NewEventCard from "components/NewEventCard";
 import PageTitle from "components/PageTitle";
 import EventsFilters from "components/EventsFilters";
 import SearchInput from "components/SearchInput";
+import SortSelect from "components/SortSelect";
 import { eventsList, eventsFilters } from "../../helper/TestExampleData";
 import _ from "lodash";
 import { connect } from "react-redux";
@@ -13,12 +14,34 @@ import styles from "./styles.module.scss";
 
 const Events = () => {
     const [currentFilter, setCurrentFilter] = useState("all");
-    const [filteredEvents, setEventsFiltered] = useState(eventsList);
+    const [newEventList, setNewEventList] = useState(eventsList);
+    const [filteredEvents, setFilteredEvents] = useState([]);
+
+    const sortingEvents = () => {};
+
+    const searchingEvents = (searchString) => {
+        let searchLower = null;
+        searchLower = searchString.toLowerCase();
+        if (searchString.length === 0) {
+            if (currentFilter === "all") {
+                setNewEventList(eventsList);
+            } else {
+                setNewEventList(filteredEvents);
+            }
+        } else {
+            const eventsAfterSearch = filteredEvents.filter((event) => {
+                if (event.title.toLowerCase().includes(searchLower))
+                    return true;
+            });
+            setNewEventList(eventsAfterSearch);
+        }
+    };
 
     const filteringEvents = (filter) => {
         setCurrentFilter(filter);
         if (filter === "all") {
-            setEventsFiltered(eventsList);
+            setNewEventList(eventsList);
+            setFilteredEvents(eventsList);
         } else if (filter === "other") {
             let newArrayFilters = eventsFilters.filter((filter) => {
                 if (filter.value !== "all" && filter.value !== "other")
@@ -33,18 +56,20 @@ const Events = () => {
                 }
                 return true;
             });
-            setEventsFiltered(eventsAfterFiltering);
+            setNewEventList(eventsAfterFiltering);
+            setFilteredEvents(eventsAfterFiltering);
         } else {
             let eventsAfterFiltering = eventsList.filter((event) => {
                 for (let i = 0; i < event.tags.length; i++) {
                     if (event.tags[i] === filter) return true;
                 }
             });
-            setEventsFiltered(eventsAfterFiltering);
+            setNewEventList(eventsAfterFiltering);
+            setFilteredEvents(eventsAfterFiltering);
         }
     };
     const renderEventsList = () => {
-        return _.map(filteredEvents, (event, eventIndex) => {
+        return _.map(newEventList, (event, eventIndex) => {
             return (
                 <NewEventCard
                     key={eventIndex}
@@ -73,8 +98,11 @@ const Events = () => {
                 <div className={styles.events___filters___search_sort}>
                     <SearchInput
                         placeholder="Search..."
-                        onChange={(e) => console.log("value", e.target.value)}
+                        onChange={(e) => {
+                            searchingEvents(e.target.value);
+                        }}
                     />
+                    <SortSelect />
                 </div>
             </div>
             <Container>{renderEventsList()}</Container>
