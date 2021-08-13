@@ -14,10 +14,10 @@ Then install the npm packages that are necessary for this project:
 npm install
 ```
 
-Last step, run the project:
+Afterward, run the project:
 
 ```bash
 npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once the project is running just open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
