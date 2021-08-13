@@ -40,7 +40,7 @@ const App = () => {
                 />
                 <Switch>
                     <Route exact path={Routes.logout} component={Logout} />
-                    <Route exact path={Routes.welcome} component={Events} />
+                    <Route exact path={Routes.welcome} component={Welcome} />
                     <Route
                         exact
                         path={Routes.termsAndConditions}
