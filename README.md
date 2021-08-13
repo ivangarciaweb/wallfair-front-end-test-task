@@ -20,4 +20,4 @@ Afterward, run the project:
 npm run start
 ```
 
-Once the project is running just open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once the project is running just open [http://localhost:3000/events](http://localhost:3000/events) with your browser to see the result. The new page that I implemented is under the url "/events".
