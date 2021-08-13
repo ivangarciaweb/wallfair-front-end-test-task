@@ -13,6 +13,13 @@
     align-items: center;
 }
 
+%displayRowReverseFlexStart {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 %displayRowFlexStartStretch {
     display: flex;
     flex-direction: row;

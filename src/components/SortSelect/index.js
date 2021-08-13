@@ -16,7 +16,7 @@ export default function SortSelect({ onSelect, currentOption }) {
                 [`${styles.sort_select___list___active}`]:
                     option.value === currentOption.value,
             });
-            const { label, value } = option;
+            const { label } = option;
             return (
                 <div
                     className={classesOption}

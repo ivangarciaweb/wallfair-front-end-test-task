@@ -7,4 +7,13 @@
     margin: 20px 0;
     flex-wrap: wrap;
     @extend %displayRowFlexStart;
+
+    @include tabletPortrait() {
+        width: calc(100% + 10px);
+        margin: 20px -5px;
+    }
+    @include tabletLandscape() {
+        width: 100%;
+        margin: 20px 0;
+    }
 }

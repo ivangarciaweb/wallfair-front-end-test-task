@@ -1,0 +1,65 @@
+// Media Queries for responsive
+$mobilePortrait: "(min-width: 320px)";
+$mobileLandscape: "(min-width: 480px)";
+$tabletPortrait: "(min-width: 768px)";
+$tabletLandscape: "(min-width: 992px)";
+$desktop: "(min-width: 1220px)";
+$desktop1440: "(min-width: 1440px)";
+$desktop2K: "(min-width: 1920px)";
+$desktop4K: "(min-width: 2800px)";
+
+// Mobile portrait mixin
+@mixin mobilePortrait() {
+    @media #{$mobilePortrait} {
+        @content;
+    }
+}
+
+// Mobile landscape mixin
+@mixin mobileLandscape() {
+    @media #{$mobileLandscape} {
+        @content;
+    }
+}
+
+// Tablet portrait mixin
+@mixin tabletPortrait() {
+    @media #{$tabletPortrait} {
+        @content;
+    }
+}
+
+// Tablet landscape mixin
+@mixin tabletLandscape() {
+    @media #{$tabletLandscape} {
+        @content;
+    }
+}
+
+// Desktop mixin
+@mixin desktop() {
+    @media #{$desktop} {
+        @content;
+    }
+}
+
+// Desktop 1440 mixin
+@mixin desktop1440() {
+    @media #{$desktop1440} {
+        @content;
+    }
+}
+
+// Desktop 2K mixin
+@mixin desktop2K() {
+    @media #{$desktop2K} {
+        @content;
+    }
+}
+
+// Desktop 4K mixin
+@mixin desktop4K() {
+    @media #{$desktop4K} {
+        @content;
+    }
+}

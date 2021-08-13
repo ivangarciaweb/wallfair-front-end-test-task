@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Icon from "components/Icon";
 import styles from "./styles.module.scss";
 import IconType from "../Icon/IconType";
@@ -19,9 +20,14 @@ export default function SearchInput(props) {
         step,
         disabled,
     } = props;
-
+    const classesPlaceholder = classNames({
+        [`${styles.input_cmp___placeholder}`]: true,
+        [`${styles.input_cmp___placeholder_show}`]:
+            !value || (value && value.length === 0),
+    });
     return (
         <div className={styles.input_cmp}>
+            <span className={classesPlaceholder}>{placeholder}</span>
             <input
                 type={type}
                 id={id}
@@ -29,7 +35,7 @@ export default function SearchInput(props) {
                 form={form}
                 value={value}
                 onChange={onChange}
-                placeholder={placeholder}
+                placeholder={""}
                 max={max}
                 min={min}
                 maxLength={maxLength}

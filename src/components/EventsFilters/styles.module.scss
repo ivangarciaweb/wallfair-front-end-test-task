@@ -2,5 +2,8 @@
 
 .events_filters {
     @extend %displayRowFlexStart;
-    margin: 20px 0;
+    margin: 10px 0;
+    @include desktop() {
+        margin: 20px 0;
+    }
 }

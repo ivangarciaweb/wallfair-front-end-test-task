@@ -11,6 +11,32 @@
         outline: none;
         margin: 0;
         color: $colorWhite;
+        font-size: 11px;
+        @include tabletPortrait() {
+            font-size: 12px;
+        }
+        @include desktop() {
+            font-size: 14px;
+        }
+    }
+    &___placeholder {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 15px;
+        margin: auto;
+        color: rgba($color: $colorWhite, $alpha: 0.5);
+        font-size: 10px;
+        transition: $fastTransition;
+        pointer-events: none;
+        opacity: 0;
+        @extend %displayFlexRowCenter;
+        @include tabletLandscape() {
+            font-size: 12px;
+        }
+    }
+    &___placeholder_show {
+        opacity: 1;
     }
     &___icon {
         position: absolute;

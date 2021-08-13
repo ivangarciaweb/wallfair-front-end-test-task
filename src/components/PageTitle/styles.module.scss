@@ -2,9 +2,20 @@
 
 .page_title {
     color: $colorWhite;
-    padding: 10px;
+    padding: 5px 0;
     font: {
-        size: 24px;
+        size: 16px;
         weight: bold;
+    }
+    @include tabletPortrait() {
+        font-size: 20px;
+    }
+    @include tabletLandscape() {
+        padding: 5px;
+        font-size: 20px;
+    }
+    @include desktop() {
+        padding: 10px 8px;
+        font-size: 24px;
     }
 }

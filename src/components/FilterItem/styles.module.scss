@@ -2,19 +2,39 @@
 
 .filter_item {
     cursor: pointer;
-    margin: 10px;
+    margin: 5px;
     color: $colorWhite;
     opacity: 0.5;
     transition: $defaultTransition;
     @extend %displayFlexColumnCenterText;
+    @include tabletPortrait() {
+        margin: 7.5px;
+    }
+    @include desktop() {
+        margin: 10px;
+    }
+    &:first-child {
+        margin-left: 0;
+        @include desktop() {
+            margin-left: 5px;
+        }
+    }
     &___circle {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         background: $colorWhite;
-        border-radius: 40px;
-        @extend %displayFlexColumnCenterText;
+        border-radius: 50%;
         position: relative;
         overflow: hidden;
+        @extend %displayFlexColumnCenterText;
+        @include tabletPortrait() {
+            width: 35px;
+            height: 35px;
+        }
+        @include desktop() {
+            width: 40px;
+            height: 40px;
+        }
         &___background {
             position: absolute;
             top: 0;
@@ -36,8 +56,14 @@
     &___label {
         margin-top: 5px;
         font: {
-            size: 11px;
+            size: 8px;
             weight: 300;
+        }
+        @include tabletPortrait() {
+            font-size: 9px;
+        }
+        @include desktop() {
+            font-size: 11px;
         }
     }
     &.active {

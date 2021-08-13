@@ -1,15 +1,23 @@
 @import "../../styles/all";
 
 .event_card {
-    width: calc(25% - 20px);
+    width: 100%;
     min-height: 250px;
-    margin: 10px;
+    margin: 10px 0;
     border-radius: 12px;
     position: relative;
     cursor: pointer;
     transition: $defaultTransition;
     overflow: hidden;
     @extend %displayColumnFlexEndBottomLeft;
+    @include tabletPortrait() {
+        width: calc(50% - 10px);
+        margin: 10px 5px;
+    }
+    @include desktop() {
+        width: calc(25% - 20px);
+        margin: 10px 10px;
+    }
     &:hover {
         transform: translateY(-10px);
         .event_card {
@@ -54,23 +62,33 @@
     }
     &___hot {
         position: absolute;
-        top: 25px;
-        left: 25px;
+        top: 20px;
+        left: 20px;
         z-index: 3;
+        @include tabletLandscape() {
+            top: 25px;
+            left: 25px;
+        }
     }
     &___content {
-        padding: 25px 25px 40px;
+        padding: 25px 20px 40px;
         position: relative;
         z-index: 2;
         height: 100%;
         width: 100%;
+        @include tabletLandscape() {
+            padding: 25px 25px 40px;
+        }
         &___title {
             display: block;
             line-height: 20px;
             margin-bottom: 5px;
             font: {
-                size: 20px;
+                size: 16px;
                 weight: 600;
+            }
+            @include tabletLandscape() {
+                font-size: 20px;
             }
         }
         &___time_counter {
@@ -79,9 +97,15 @@
             right: 0;
             bottom: 0;
             width: 100%;
-            padding: 5px 25px;
+            padding: 5px 15px;
             background: rgba($color: $colorPurpleLight, $alpha: 0.13);
             @extend %displayRowFlexEnd;
+            @include tabletPortrait() {
+                padding: 5px 10px;
+            }
+            @include tabletLandscape() {
+                padding: 5px 25px;
+            }
             &___label {
                 font: {
                     size: 10px;

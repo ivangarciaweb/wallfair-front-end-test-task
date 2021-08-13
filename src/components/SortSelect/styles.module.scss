@@ -2,25 +2,43 @@
 .sort_select {
     position: relative;
     background: rgba($color: $colorPurpleLight, $alpha: 0.15);
-
     color: $colorWhite;
     border-radius: 4px;
-    margin-left: 10px;
+    margin-right: 10px;
     z-index: 5;
     @extend %displayRowFlexEnd;
+    @include tabletLandscape() {
+        margin-left: 10px;
+        margin-right: 0;
+    }
     &___content {
         cursor: pointer;
-        padding: 10px 10px 10px 15px;
+        padding: 10px;
+        @include tabletLandscape() {
+            padding: 10px 10px 10px 15px;
+        }
         @extend %displayRowFlexEnd;
         &___label {
-            font-size: 12px;
+            font-size: 10px;
             opacity: 0.5;
+            width: 45px;
+            @include tabletLandscape() {
+                font-size: 12px;
+                width: auto;
+            }
         }
         &___current_option {
-            width: 100px;
-            padding: 0 15px;
-            font-size: 12px;
+            width: 90px;
+            padding: 0 10px;
+            font-size: 10px;
             text-align: right;
+            @include mobileLandscape() {
+                padding: 0 15px;
+                width: 100px;
+            }
+            @include tabletLandscape() {
+                font-size: 12px;
+            }
         }
         &___icon {
             transition: $defaultTransition;
@@ -35,7 +53,7 @@
         right: 0;
         top: 35px;
         height: auto;
-        background: rgba($color: $colorPurpleLight, $alpha: 0.25);
+        background: rgba($color: $colorBlueDark, $alpha: 0.95);
         border-radius: 4px;
         opacity: 0;
         transition: $defaultTransition;
@@ -45,6 +63,7 @@
             font-size: 12px;
             cursor: pointer;
             text-align: right;
+            transition: $defaultTransition;
             &:hover {
                 background: rgba($color: $colorPurpleLight, $alpha: 0.25);
             }

@@ -2,10 +2,33 @@
 
 .events {
     &___filters {
-        @extend %displayRowSpaceBetween;
-        margin-right: 10px;
+        width: 100%;
+        @extend %displayColumnFlexStart;
+        @include tabletPortrait() {
+            margin-right: 10px;
+        }
+        @include tabletLandscape() {
+            width: auto;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 5px;
+        }
+        @include desktop() {
+            margin-right: 10px;
+        }
         &___search_sort {
-            @extend %displayRowSpaceBetween;
+            width: 100%;
+            margin: 10px 0;
+            @extend %displayRowReverseFlexStart;
+            @include mobileLandscape() {
+                justify-content: space-between;
+            }
+            @include tabletLandscape() {
+                width: auto;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
         }
     }
 }

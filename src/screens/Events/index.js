@@ -16,6 +16,7 @@ const Events = () => {
     const [currentFilter, setCurrentFilter] = useState("all");
     const [newEventList, setNewEventList] = useState(eventsList);
     const [filteredEvents, setFilteredEvents] = useState(eventsList);
+    const [currentSearchString, setCurrentSearchString] = useState(null);
     const [currentSortOption, setCurrenSortOption] = useState({
         label: "Time to end",
         value: "timeToEnd",
@@ -30,55 +31,55 @@ const Events = () => {
                 const sortedEvents = arrayOfEvents.sort((a, b) => {
                     return a.title.localeCompare(b.title);
                 });
-                setNewEventList(sortedEvents);
+                setNewEventList([...sortedEvents]);
                 break;
             case "reverse":
                 const sortedEventsReverse = arrayOfEvents.sort((a, b) => {
                     return b.title.localeCompare(a.title);
                 });
-                setNewEventList(sortedEventsReverse);
+                setNewEventList([...sortedEventsReverse]);
                 break;
             case "hot":
                 const rebuiltHotArray = [
                     ...filteredEvents.filter((event) => !!event.hot),
                     ...filteredEvents.filter((event) => !event.hot),
                 ];
-                setNewEventList(rebuiltHotArray);
+                setNewEventList([...rebuiltHotArray]);
                 break;
             case "timeToEnd":
             default:
-                setNewEventList(
-                    filteredEvents.sort(function (a, b) {
-                        return a.eventEnd - b.eventEnd;
-                    })
-                );
+                const timeToEndNewArray = filteredEvents.sort(function (a, b) {
+                    return a.eventEnd - b.eventEnd;
+                });
+                setNewEventList([...timeToEndNewArray]);
                 break;
         }
     };
 
     const searchingEvents = (searchString) => {
+        setCurrentSearchString(searchString);
         let searchLower = null;
         searchLower = searchString.toLowerCase();
         if (searchString.length === 0) {
             if (currentFilter === "all") {
-                setNewEventList(eventsList);
+                setNewEventList([...eventsList]);
             } else {
-                setNewEventList(filteredEvents);
+                setNewEventList([...filteredEvents]);
             }
         } else {
-            const eventsAfterSearch = filteredEvents.filter((event) => {
+            const eventsAfterSearch = newEventList.filter((event) => {
                 if (event.title.toLowerCase().includes(searchLower))
                     return true;
             });
-            setNewEventList(eventsAfterSearch);
+            setNewEventList([...eventsAfterSearch]);
         }
     };
 
     const filteringEvents = (filter) => {
         setCurrentFilter(filter);
         if (filter === "all") {
-            setNewEventList(eventsList);
-            setFilteredEvents(eventsList);
+            setNewEventList([...eventsList]);
+            setFilteredEvents([...eventsList]);
         } else if (filter === "other") {
             let newArrayFilters = eventsFilters.filter((filter) => {
                 if (filter.value !== "all" && filter.value !== "other")
@@ -93,16 +94,16 @@ const Events = () => {
                 }
                 return true;
             });
-            setNewEventList(eventsAfterFiltering);
-            setFilteredEvents(eventsAfterFiltering);
+            setNewEventList([...eventsAfterFiltering]);
+            setFilteredEvents([...eventsAfterFiltering]);
         } else {
             let eventsAfterFiltering = eventsList.filter((event) => {
                 for (let i = 0; i < event.tags.length; i++) {
                     if (event.tags[i] === filter) return true;
                 }
             });
-            setNewEventList(eventsAfterFiltering);
-            setFilteredEvents(eventsAfterFiltering);
+            setNewEventList([...eventsAfterFiltering]);
+            setFilteredEvents([...eventsAfterFiltering]);
         }
     };
     const renderEventsList = () => {
@@ -122,8 +123,12 @@ const Events = () => {
 
     useEffect(() => {
         filteringEvents(currentFilter);
+    }, []);
+
+    useEffect(() => {
         sortingEvents(currentSortOption);
-    }, [currentFilter, currentSortOption]);
+        if (currentSearchString) searchingEvents(currentSearchString);
+    }, [currentFilter, currentSortOption, currentSearchString]);
 
     return (
         <BaseContainerWithNavbar withPaddingTop={true} contentPadding={true}>
@@ -136,6 +141,7 @@ const Events = () => {
                 <div className={styles.events___filters___search_sort}>
                     <SearchInput
                         placeholder="Search..."
+                        value={currentSearchString}
                         onChange={(e) => {
                             searchingEvents(e.target.value);
                         }}
